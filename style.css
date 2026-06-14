@@ -1,0 +1,48 @@
+/* --- ESTILOS GERAIS --- */
+/* Faz a troca de cores da tela ser suave em vez de piscar direto */
+body, .card, p, h1, h2, h3, h4, h5, span, div, a, button, .modal-content {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- DIV DE AVISO DO CARRINHO (ESTILO SIMPLES) --- */
+.caixa-aviso {
+    background-color: #d1e7dd; /* Fundo verdinho claro */
+    color: #0f5132; /* Texto verde escuro */
+    border: 1px solid #badbcc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- DESAFIO PLUS: ALTO CONTRASTE (MODO ESCURO) --- */
+.alto-contraste {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Força os cards e o modal a ficarem escuros */
+.alto-contraste .card, 
+.alto-contraste .bg-light,
+.alto-contraste .bg-white,
+.alto-contraste .modal-content,
+.alto-contraste .list-group-item {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #333 !important;
+}
+
+/* Garante que os textos pretos ou cinzas fiquem brancos/claros no fundo escuro */
+.alto-contraste .text-dark, 
+.alto-contraste .text-muted,
+.alto-contraste .modal-title {
+    color: #f1f1f1 !important;
+}
+
+/* Arruma a div de aviso para também ficar escura no alto contraste */
+.alto-contraste .caixa-aviso {
+    background-color: #051b11 !important;
+    color: #75b798 !important;
+    border-color: #0f5132 !important;
+}

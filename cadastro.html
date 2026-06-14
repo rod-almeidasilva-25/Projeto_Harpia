@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpia - Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <div class="card shadow-sm border-0 p-4 rounded-4">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-dark">Cadastro Harpia</h2>
+                        <p class="text-muted">Crie sua conta para aproveitar os nossos títulos</p>
+                    </div>
+
+                    <form id="formCadastro" novalidate>
+                        
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" placeholder="15 a 60 letras" required>
+                            <span id="erro-nome" class="text-danger small mt-1" style="display: none;">O nome deve ter entre 15 e 60 letras.</span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                                <input type="date" class="form-control" id="dataNascimento" required>
+                                <span id="erro-dataNascimento" class="text-danger small mt-1" style="display: none;">Preencha sua data de nascimento.</span>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-select" id="sexo" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="O">Outro</option>
+                                </select>
+                                <span id="erro-sexo" class="text-danger small mt-1" style="display: none;">Selecione o seu sexo.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nomeMaterno" class="form-label">Nome Materno</label>
+                            <input type="text" class="form-control" id="nomeMaterno" required>
+                            <span id="erro-nomeMaterno" class="text-danger small mt-1" style="display: none;">Preencha o nome da sua mãe corretamente.</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="Apenas números" required>
+                            <span id="erro-cpf" class="text-danger small mt-1" style="display: none;">Preencha o seu CPF.</span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="telCelular" class="form-label">Telefone Celular</label>
+                                <input type="text" class="form-control" id="telCelular" placeholder="(+55)XX-XXXXXXXX" required>
+                                <span id="erro-telCelular" class="text-danger small mt-1" style="display: none;">Formato exigido: (+55)XX-XXXXXXXX</span>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="telFixo" class="form-label">Telefone Fixo</label>
+                                <input type="text" class="form-control" id="telFixo" placeholder="(+55)XX-XXXXXXXX" required>
+                                <span id="erro-telFixo" class="text-danger small mt-1" style="display: none;">Formato exigido: (+55)XX-XXXXXXXX</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço Completo</label>
+                            <textarea class="form-control" id="endereco" rows="2" required></textarea>
+                            <span id="erro-endereco" class="text-danger small mt-1" style="display: none;">Preencha seu endereço completo.</span>
+                        </div>
+
+                        <div class="row mb-3 mt-4 border-top pt-4">
+                            <div class="col-md-4">
+                                <label for="login" class="form-label">Login</label>
+                                <input type="text" class="form-control" id="login" placeholder="Ex: felipe" maxlength="6" required>
+                                <span id="erro-login" class="text-danger small mt-1" style="display: none;">Exatamente 6 letras.</span>
+                            </div>
+                            <div class="col-md-4 mt-3 mt-md-0">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" placeholder="8 letras" maxlength="8" required>
+                                <span id="erro-senha" class="text-danger small mt-1" style="display: none;">Exatamente 8 letras.</span>
+                            </div>
+                            <div class="col-md-4 mt-3 mt-md-0">
+                                <label for="confirmaSenha" class="form-label">Confirmar Senha</label>
+                                <input type="password" class="form-control" id="confirmaSenha" maxlength="8" required>
+                                <span id="erro-confirmaSenha" class="text-danger small mt-1" style="display: none;">As senhas não batem.</span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg rounded-3 fw-bold">Concluir Cadastro</button>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="login.html" class="text-muted small text-decoration-none">Já tem conta? Voltar ao Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

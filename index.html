@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpia - Vitrine de Mangás e HQs</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">HARPIA</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#" onclick="filtrarCategoria('Todos')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="filtrarCategoria('Mangá')">Mangás</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="filtrarCategoria('HQ')">HQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="filtrarCategoria('Manhwa')">Manhwas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="filtrarCategoria('Manhua')">Manhuas</a></li>
+                </ul>
+
+                <div class="d-flex ms-lg-3 me-3">
+                    <input class="form-control me-1" type="search" id="campoPesquisa" placeholder="Buscar título..." onkeyup="filtrarPesquisa()">
+                    <button class="btn btn-outline-light" type="button" onclick="filtrarPesquisa()">🔍</button>
+                </div>
+
+                <div class="d-flex align-items-center text-white mt-3 mt-lg-0">
+                    <div class="btn-group me-3" role="group">
+                        <button type="button" id="btnContraste" class="btn btn-sm btn-outline-warning">◐</button>
+                        <button type="button" id="btnDiminuir" class="btn btn-sm btn-outline-light">A-</button>
+                        <button type="button" id="btnAumentar" class="btn btn-sm btn-outline-light">A+</button>
+                    </div>
+                    
+                    <div class="me-3 fs-5" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalCarrinho">
+                        🛒 <span id="contadorCarrinho" class="badge bg-danger rounded-pill fs-6 position-relative" style="top: -2px;">0</span>
+                    </div>
+                    
+                    <span class="me-3 d-none d-lg-block">Olá, <strong id="nomeUsuarioLogado">Visitante</strong>!</span>
+                    <button id="btnDeslogar" class="btn btn-outline-danger btn-sm rounded-3">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        
+        <div class="row mb-3">
+            <div class="col">
+                <h3 class="fw-bold text-dark" id="tituloSecao">Todos os Títulos</h3>
+                <p class="text-muted">Os volumes mais aguardados para a sua coleção</p>
+            </div>
+        </div>
+
+        <div id="mensagemFeedback" class="caixa-aviso" style="display: none;">
+            </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="vitrineProdutos">
+            
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/jujutsu-kaisen-01.jpg" class="card-img-top" alt="Capa Jujutsu">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-primary mb-2 align-self-start badge-categoria">Mangá</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Jujutsu Kaisen - Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">Ação e maldições no maior sucesso atual.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 36,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Jujutsu Kaisen - Vol. 01', 36.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/berserk-01.jpg" class="card-img-top" alt="Capa Berserk">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-primary mb-2 align-self-start badge-categoria">Mangá</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Berserk - Edição Colecionador Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">Edição especial com capa dura.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 44,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Berserk - Vol. 01', 44.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/one-piece-01.jpg" class="card-img-top" alt="Capa One Piece">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-primary mb-2 align-self-start badge-categoria">Mangá</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">One Piece - Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">O início da maior jornada pirata de todas.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 33,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('One Piece - Vol. 01', 33.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/darth-vader-01.jpg" class="card-img-top" alt="Capa Darth Vader">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-danger mb-2 align-self-start badge-categoria">HQ</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Star Wars: Darth Vader</h5>
+                        <p class="card-text text-muted small flex-grow-1">O coração sombrio dos Sith em formato luxo.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 69,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Star Wars: Darth Vader', 69.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/dragon-age-silent-grove.jpg" class="card-img-top" alt="Capa Dragon Age">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-danger mb-2 align-self-start badge-categoria">HQ</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Dragon Age: The Silent Grove</h5>
+                        <p class="card-text text-muted small flex-grow-1">Expanda o universo com Rei Alistair.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 55,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Dragon Age: The Silent Grove', 55.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/batman-piada-mortal.jpg" class="card-img-top" alt="Capa Batman">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-danger mb-2 align-self-start badge-categoria">HQ</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Batman: A Piada Mortal</h5>
+                        <p class="card-text text-muted small flex-grow-1">A origem definitiva do maior vilão de Gotham.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 49,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Batman: A Piada Mortal', 49.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/solo-leveling-01.jpg" class="card-img-top" alt="Capa Solo Leveling">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-success mb-2 align-self-start badge-categoria">Manhwa</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Solo Leveling - Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">O caçador mais fraco se torna o mais forte.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 54,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Solo Leveling - Vol. 01', 54.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/leitor-onisciente-01.jpg" class="card-img-top" alt="Capa Leitor Onisciente">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-success mb-2 align-self-start badge-categoria">Manhwa</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Ponto de Vista do Leitor Onisciente - 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">E se a sua novel favorita virasse realidade?</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 59,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Leitor Onisciente - Vol. 01', 59.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/mo-dao-zu-shi-01.jpg" class="card-img-top" alt="Capa Mo Dao Zu Shi">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-warning text-dark mb-2 align-self-start badge-categoria">Manhua</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Mo Dao Zu Shi - Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">O mestre da cultivação demoníaca retorna.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 64,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Mo Dao Zu Shi - Vol. 01', 64.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-produto">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <img src="img/tales-of-demons-01.jpg" class="card-img-top" alt="Capa Tales of Demons">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-warning text-dark mb-2 align-self-start badge-categoria">Manhua</span>
+                        <h5 class="card-title fw-bold text-dark mb-1">Tales of Demons and Gods - Vol. 01</h5>
+                        <p class="card-text text-muted small flex-grow-1">A segunda chance do espiritualista mais forte.</p>
+                        <div class="mt-3">
+                            <span class="fs-5 fw-bold text-dark">R$ 49,90</span>
+                            <button class="btn btn-dark btn-sm w-100 mt-2 rounded-3 fw-semibold" onclick="adicionarCarrinho('Tales of Demons - Vol. 01', 49.90)">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5 class="fw-bold">Sobre Nós</h5>
+                    <p class="small">A Harpia é o seu portal definitivo para mídias físicas de mangás, HQs, manhwas e manhuas. Nosso objetivo é trazer as melhores obras para completar a sua coleção com segurança e agilidade.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h5 class="fw-bold">Contato</h5>
+                    <ul class="list-unstyled small">
+                        <li>Instagram: <strong>@harpia.e_commerce</strong></li>
+                        <li>E-mail: <strong>harpiaecommerce8@gmail.com</strong></li>
+                        <li>WhatsApp: <strong>(21) 99999-9999</strong></li>
+                        <li>Telefone: <strong>(21) 2222-2222</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top border-secondary">
+                <p class="small mb-0">© 2026 Harpia - Projeto Acadêmico UNISUAM</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="modalCarrinho" tabindex="-1" aria-labelledby="tituloModalCarrinho" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="tituloModalCarrinho">Seu Carrinho de Compras</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="listaDeItensNoCarrinho" class="list-group mb-3">
+                        <li class="list-group-item text-muted text-center" id="mensagemCarrinhoVazio">Seu carrinho está vazio.</li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold">Total:</h5>
+                        <h5 class="mb-0 fw-bold text-success">R$ <span id="valorTotalCarrinho">0,00</span></h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+                    <button type="button" class="btn btn-success fw-bold" onclick="finalizarCompra()">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
