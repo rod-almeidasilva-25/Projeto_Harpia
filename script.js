@@ -12,13 +12,13 @@ function verificarEstadoUsuario() {
     const btnDeslogar = document.getElementById('btnDeslogar');
 
     if (usuarioSalvo) {
-        nomeSpan.textContent = usuarioSalvo;
-        btnEntrar.classList.add('d-none');
-        btnDeslogar.classList.remove('d-none');
+        if (nomeSpan) nomeSpan.textContent = usuarioSalvo;
+        if (btnEntrar) btnEntrar.classList.add('d-none');
+        if (btnDeslogar) btnDeslogar.classList.remove('d-none');
     } else {
-        nomeSpan.textContent = "Visitante";
-        btnEntrar.classList.remove('d-none');
-        btnDeslogar.classList.add('d-none');
+        if (nomeSpan) nomeSpan.textContent = "Visitante";
+        if (btnEntrar) btnEntrar.classList.remove('d-none');
+        if (btnDeslogar) btnDeslogar.classList.add('d-none');
     }
 }
 
@@ -57,7 +57,10 @@ function processarCheckout() {
 
 function filtrarCategoria(categoria) {
     const produtos = document.querySelectorAll('.col-produto');
-    document.getElementById('tituloSecao').textContent = categoria === 'Todos' ? 'Todos os Títulos' : categoria;
+    const tituloSecao = document.getElementById('tituloSecao');
+    if (tituloSecao) {
+        tituloSecao.textContent = categoria === 'Todos' ? 'Todos os Títulos' : categoria;
+    }
     
     produtos.forEach(produto => {
         const cat = produto.getAttribute('data-categoria');
@@ -70,7 +73,9 @@ function filtrarCategoria(categoria) {
 }
 
 function filtrarPesquisa() {
-    const termo = document.getElementById('campoPesquisa').value.toLowerCase();
+    const campo = document.getElementById('campoPesquisa');
+    if (!campo) return;
+    const termo = campo.value.toLowerCase();
     const produtos = document.querySelectorAll('.col-produto');
 
     produtos.forEach(produto => {
